@@ -43,6 +43,45 @@ Encryption in transit is enabled by default in the master branch version of the 
 
 <!--- BEGIN_TF_DOCS --->
 
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.13 |
+| aws | >= 3.13, < 4.0 |
+| helm | >= 1.0, < 1.4.0 |
+| kubectl | 1.9.4 |
+| kubernetes | >= 1.10.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| helm | >= 1.0, < 1.4.0 |
+| kubectl | 1.9.4 |
+| kubernetes | >= 1.10.0 |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| create\_namespace | Whether to create k8s namespace with name defined by `namespace`. | `bool` | `true` | no |
+| create\_storage\_class | Whether to create Storage class for EFS CSI driver. | `bool` | `true` | no |
+| enabled | n/a | `bool` | `true` | no |
+| helm\_chart\_name | Amazon EFS CSI Driver chart name. | `string` | `"aws-efs-csi-driver"` | no |
+| helm\_chart\_release\_name | Amazon EFS CSI Driver release name. | `string` | `"aws-efs-csi-driver"` | no |
+| helm\_chart\_repo | Amazon EFS CSI Driver repository name. | `string` | `"https://kubernetes-sigs.github.io/aws-efs-csi-driver/"` | no |
+| helm\_chart\_version | Amazon EFS CSI Driver chart version. | `string` | `"1.1.0"` | no |
+| mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
+| namespace | Kubernetes namespace to deploy EKS Spot termination handler Helm chart. | `string` | `"aws-efs-csi-driver"` | no |
+| service\_account\_name | Amazon EFS CSI Driver service account name. | `string` | `"aws-efs-csi-driver"` | no |
+| settings | Additional settings which will be passed to the Helm chart values, see https://github.com/kubernetes-sigs/aws-efs-csi-driver. | `map(any)` | `{}` | no |
+| storage\_class\_name | Storage class name for EFS CSI driver. | `string` | `"efs-sc"` | no |
+
+## Outputs
+
+No output.
+
 <!--- END_TF_DOCS --->
 
 ## Authors

@@ -51,7 +51,7 @@ Encryption in transit is enabled by default in the master branch version of the 
 | terraform | >= 0.13 |
 | aws | >= 3.13, < 4.0 |
 | helm | >= 1.0, < 3.0 |
-| kubectl | 1.10.0 |
+| kubectl | >= 1.9.4 |
 | kubernetes | >= 1.10.0, < 3.0.0 |
 
 ## Providers
@@ -59,7 +59,7 @@ Encryption in transit is enabled by default in the master branch version of the 
 | Name | Version |
 |------|---------|
 | helm | >= 1.0, < 3.0 |
-| kubectl | 1.10.0 |
+| kubectl | >= 1.9.4 |
 | kubernetes | >= 1.10.0, < 3.0.0 |
 
 ## Inputs

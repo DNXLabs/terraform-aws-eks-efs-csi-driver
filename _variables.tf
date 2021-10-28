@@ -3,6 +3,21 @@ variable "enabled" {
   default = true
 }
 
+variable "cluster_name" {
+  type        = string
+  description = "The name of the EKS cluster"
+}
+
+variable "cluster_identity_oidc_issuer" {
+  type        = string
+  description = "The OIDC Identity issuer for the cluster."
+}
+
+variable "cluster_identity_oidc_issuer_arn" {
+  type        = string
+  description = "The OIDC Identity issuer ARN for the cluster that can be used to associate IAM roles with a service account."
+}
+
 variable "helm_chart_name" {
   type        = string
   default     = "aws-efs-csi-driver"
@@ -23,7 +38,7 @@ variable "helm_chart_repo" {
 
 variable "helm_chart_version" {
   type        = string
-  default     = "1.2.4"
+  default     = "2.2.0"
   description = "Amazon EFS CSI Driver chart version."
 }
 
@@ -35,8 +50,8 @@ variable "create_namespace" {
 
 variable "namespace" {
   type        = string
-  default     = "aws-efs-csi-driver"
-  description = "Kubernetes namespace to deploy EKS Spot termination handler Helm chart."
+  default     = "kube-system"
+  description = "Kubernetes namespace to deploy EFS CSI Driver Helm chart."
 }
 
 variable "service_account_name" {

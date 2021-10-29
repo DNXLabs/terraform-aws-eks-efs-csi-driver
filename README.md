@@ -10,9 +10,11 @@ The [Amazon Elastic File System](https://aws.amazon.com/efs/) Container Storage 
 ## Usage
 ```
 module "efs_csi_driver" {
-  source = "git::https://github.com/DNXLabs/terraform-aws-eks-efs-csi-driver.git?ref=0.1.0"
+  source = "git::https://github.com/DNXLabs/terraform-aws-eks-efs-csi-driver.git"
 
-  enabled = true
+  cluster_name                     = module.eks_cluster.cluster_id
+  cluster_identity_oidc_issuer     = module.eks_cluster.cluster_oidc_issuer_url
+  cluster_identity_oidc_issuer_arn = module.eks_cluster.oidc_provider_arn
 }
 ```
 
@@ -72,9 +74,9 @@ Encryption in transit is enabled by default in the master branch version of the 
 | helm\_chart\_name | Amazon EFS CSI Driver chart name. | `string` | `"aws-efs-csi-driver"` | no |
 | helm\_chart\_release\_name | Amazon EFS CSI Driver release name. | `string` | `"aws-efs-csi-driver"` | no |
 | helm\_chart\_repo | Amazon EFS CSI Driver repository name. | `string` | `"https://kubernetes-sigs.github.io/aws-efs-csi-driver/"` | no |
-| helm\_chart\_version | Amazon EFS CSI Driver chart version. | `string` | `"1.2.4"` | no |
+| helm\_chart\_version | Amazon EFS CSI Driver chart version. | `string` | `"2.2.0"` | no |
 | mod\_dependency | Dependence variable binds all AWS resources allocated by this module, dependent modules reference this variable. | `any` | `null` | no |
-| namespace | Kubernetes namespace to deploy EKS Spot termination handler Helm chart. | `string` | `"aws-efs-csi-driver"` | no |
+| namespace | Kubernetes namespace to deploy EKS Spot termination handler Helm chart. | `string` | `"kube-system"` | no |
 | service\_account\_name | Amazon EFS CSI Driver service account name. | `string` | `"aws-efs-csi-driver"` | no |
 | settings | Additional settings which will be passed to the Helm chart values, see https://github.com/kubernetes-sigs/aws-efs-csi-driver. | `map` | `{}` | no |
 | storage\_class\_name | Storage class name for EFS CSI driver. | `string` | `"efs-sc"` | no |

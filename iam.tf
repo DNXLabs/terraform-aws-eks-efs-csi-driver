@@ -30,8 +30,8 @@ data "aws_iam_policy_document" "efs_csi_driver" {
     resources = ["*"]
     effect = "Allow"
     condition {
-      test = "StringLike"
-      variable = "aws:RequestTag/efs.csi.aws.com/cluster"
+      test = "StringEquals"
+      variable = "aws:ResourceTag/efs.csi.aws.com/cluster"
       values = ["true"]
     }
   }

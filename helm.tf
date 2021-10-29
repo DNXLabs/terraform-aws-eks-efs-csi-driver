@@ -23,7 +23,7 @@ resource "helm_release" "kubernetes_efs_csi_driver" {
   }
 
   set {
-    name  = "node.serviceAccount.create"
+    name = "node.serviceAccount.create"
     # We're using the same service account for both the nodes and controllers,
     # and we're already creating the service account in the controller config
     # above.

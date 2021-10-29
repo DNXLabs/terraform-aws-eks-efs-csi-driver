@@ -3,11 +3,11 @@ data "aws_iam_policy_document" "efs_csi_driver" {
 
   statement {
     actions = [
-        "elasticfilesystem:DescribeAccessPoints",
-        "elasticfilesystem:DescribeFileSystems"
+      "elasticfilesystem:DescribeAccessPoints",
+      "elasticfilesystem:DescribeFileSystems"
     ]
     resources = ["*"]
-    effect = "Allow"
+    effect    = "Allow"
   }
 
   statement {
@@ -15,11 +15,11 @@ data "aws_iam_policy_document" "efs_csi_driver" {
       "elasticfilesystem:CreateAccessPoint"
     ]
     resources = ["*"]
-    effect = "Allow"
+    effect    = "Allow"
     condition {
-      test = "StringLike"
+      test     = "StringLike"
       variable = "aws:RequestTag/efs.csi.aws.com/cluster"
-      values = ["true"]
+      values   = ["true"]
     }
   }
 
@@ -28,11 +28,11 @@ data "aws_iam_policy_document" "efs_csi_driver" {
       "elasticfilesystem:DeleteAccessPoint"
     ]
     resources = ["*"]
-    effect = "Allow"
+    effect    = "Allow"
     condition {
-      test = "StringEquals"
+      test     = "StringEquals"
       variable = "aws:ResourceTag/efs.csi.aws.com/cluster"
-      values = ["true"]
+      values   = ["true"]
     }
   }
 }

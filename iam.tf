@@ -4,7 +4,9 @@ data "aws_iam_policy_document" "efs_csi_driver" {
   statement {
     actions = [
       "elasticfilesystem:DescribeAccessPoints",
-      "elasticfilesystem:DescribeFileSystems"
+      "elasticfilesystem:DescribeFileSystems",
+      "elasticfilesystem:DescribeMountTargets",
+      "ec2:DescribeAvailabilityZones"
     ]
     resources = ["*"]
     effect    = "Allow"

@@ -27,6 +27,19 @@ data "aws_iam_policy_document" "efs_csi_driver" {
 
   statement {
     actions = [
+      "elasticfilesystem:TagResource"
+    ]
+    resources = ["*"]
+    effect    = "Allow"
+    condition {
+      test     = "StringLike"
+      variable = "aws:ResourceTag/efs.csi.aws.com/cluster"
+      values   = ["true"]
+    }
+  }
+
+  statement {
+    actions = [
       "elasticfilesystem:DeleteAccessPoint"
     ]
     resources = ["*"]
